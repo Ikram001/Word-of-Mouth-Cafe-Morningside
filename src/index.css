@@ -1,0 +1,283 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+
+  --color-cream: #FAF6F0;
+  --color-cream-dark: #F0E8DB;
+  --color-espresso: #1C0F07;
+  --color-espresso-light: #2C1810;
+  --color-coffee: #6B3D2A;
+  --color-coffee-mid: #8B5A3A;
+  --color-latte: #C4956A;
+  --color-gold: #D4A853;
+  --color-gold-light: #E8C47A;
+  --color-sage: #7A8B6F;
+  --color-sage-light: #9BAF8E;
+  --color-charcoal: #3D3530;
+  --color-warm-gray: #8A7F78;
+  --color-warm-gray-light: #C4BBB4;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --shadow-warm-sm: 0 2px 8px rgba(28, 15, 7, 0.08);
+  --shadow-warm-md: 0 8px 24px rgba(28, 15, 7, 0.12);
+  --shadow-warm-lg: 0 20px 60px rgba(28, 15, 7, 0.18);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-espresso);
+  margin: 0;
+  padding: 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-latte);
+  border-radius: 3px;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-gold-light);
+  color: var(--color-espresso);
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Grain texture overlay */
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Decorative line */
+.deco-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.deco-line::before,
+.deco-line::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+/* Image hover zoom */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-zoom:hover img {
+  transform: scale(1.07);
+}
+
+/* ── Mobile-first responsive utilities ── */
+
+/* Prevent overflow on tiny screens */
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 640px) {
+  .page-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Two-col grid that collapses to single on mobile */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .grid-2col {
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+}
+
+/* Auto-fit feature cards */
+.grid-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 480px) {
+  .grid-features {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-features {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Info strip */
+.info-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (min-width: 768px) {
+  .info-strip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Photo strip – 2 cols mobile, 5 desktop */
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 200px;
+}
+
+@media (min-width: 640px) {
+  .photo-strip {
+    grid-template-columns: repeat(3, 1fr);
+    height: 240px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .photo-strip {
+    grid-template-columns: repeat(5, 1fr);
+    height: 280px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Additional mobile fixes ── */
+
+/* Ensure no horizontal overflow site-wide */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Gallery masonry responsive (supplement the inline style in GalleryPage) */
+@media (max-width: 480px) {
+  .masonry-grid {
+    columns: 2 !important;
+    column-gap: 8px !important;
+  }
+  .masonry-item {
+    margin-bottom: 8px !important;
+  }
+}
+
+/* Menu filter bar hide scrollbar on webkit */
+.menu-filter::-webkit-scrollbar { display: none; }
+
+/* Page hero headings — extra safety on 320px */
+@media (max-width: 380px) {
+  h1 { font-size: clamp(1.8rem, 10vw, 2.5rem) !important; }
+}
+
+/* Touch-friendly tap targets */
+a, button {
+  -webkit-tap-highlight-color: rgba(212,168,83,0.2);
+}
+
+/* Info strip — on tiny phones collapse to single col */
+@media (max-width: 360px) {
+  .info-strip {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Contact page map — full width on mobile */
+@media (max-width: 640px) {
+  iframe {
+    height: 300px !important;
+  }
+}
+
+/* Carousel: prevent bleed on mobile */
+.carousel-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* SectionHeader subtitle max-width relief on mobile */
+@media (max-width: 640px) {
+  .section-header-subtitle {
+    font-size: 0.9rem;
+  }
+}
