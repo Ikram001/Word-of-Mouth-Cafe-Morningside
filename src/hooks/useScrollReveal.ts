@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useInView } from 'motion/react';
 
 export function useScrollReveal(threshold = 0.15) {

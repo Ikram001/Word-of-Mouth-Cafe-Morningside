@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { cafeData } from "../data/cafeData";
 
 // Use ALL photos from the data file — error handler in render will skip dead URLs
 const photos = [
