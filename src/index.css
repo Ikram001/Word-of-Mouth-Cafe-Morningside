@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 
-  --color-cream: #FAF6F0;
-  --color-cream-dark: #F0E8DB;
-  --color-espresso: #1C0F07;
-  --color-espresso-light: #2C1810;
-  --color-coffee: #6B3D2A;
-  --color-coffee-mid: #8B5A3A;
-  --color-latte: #C4956A;
-  --color-gold: #D4A853;
-  --color-gold-light: #E8C47A;
-  --color-sage: #7A8B6F;
-  --color-sage-light: #9BAF8E;
-  --color-charcoal: #3D3530;
-  --color-warm-gray: #8A7F78;
-  --color-warm-gray-light: #C4BBB4;
+  --color-cream: #faf6f0;
+  --color-cream-dark: #f0e8db;
+  --color-espresso: #1c0f07;
+  --color-espresso-light: #2c1810;
+  --color-coffee: #6b3d2a;
+  --color-coffee-mid: #8b5a3a;
+  --color-latte: #c4956a;
+  --color-gold: #d4a853;
+  --color-gold-light: #e8c47a;
+  --color-sage: #7a8b6f;
+  --color-sage-light: #9baf8e;
+  --color-charcoal: #3d3530;
+  --color-warm-gray: #8a7f78;
+  --color-warm-gray-light: #c4bbb4;
 
   --radius-xs: 2px;
   --radius-sm: 4px;
@@ -31,7 +31,9 @@
   --shadow-warm-lg: 0 20px 60px rgba(28, 15, 7, 0.18);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -85,7 +87,7 @@ body {
 
 /* Grain texture overlay */
 .grain-overlay::after {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -102,7 +104,7 @@ body {
 }
 .deco-line::before,
 .deco-line::after {
-  content: '';
+  content: "";
   display: block;
   width: 40px;
   height: 1px;
@@ -215,7 +217,9 @@ body {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -226,7 +230,8 @@ body {
 /* ── Additional mobile fixes ── */
 
 /* Ensure no horizontal overflow site-wide */
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100vw;
 }
@@ -243,16 +248,21 @@ html, body {
 }
 
 /* Menu filter bar hide scrollbar on webkit */
-.menu-filter::-webkit-scrollbar { display: none; }
+.menu-filter::-webkit-scrollbar {
+  display: none;
+}
 
 /* Page hero headings — extra safety on 320px */
 @media (max-width: 380px) {
-  h1 { font-size: clamp(1.8rem, 10vw, 2.5rem) !important; }
+  h1 {
+    font-size: clamp(1.8rem, 10vw, 2.5rem) !important;
+  }
 }
 
 /* Touch-friendly tap targets */
-a, button {
-  -webkit-tap-highlight-color: rgba(212,168,83,0.2);
+a,
+button {
+  -webkit-tap-highlight-color: rgba(212, 168, 83, 0.2);
 }
 
 /* Info strip — on tiny phones collapse to single col */
